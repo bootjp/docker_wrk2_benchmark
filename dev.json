@@ -1,0 +1,24 @@
+{
+  "wrk-bench": {
+    "image": "repo.shinobi.vpn:5000/bootjp-labs/docker-wrk",
+    "tag": "latest",
+    "memory": "512m",
+    "scale": 1,
+    "env": {},
+    "command": "sleep infinity",
+    "http": {
+      "port": 80,
+      "health_check": "/__status__",
+      "hosts": [
+        {
+          "proxy": "etc.private",
+          "hostname": "bj-wrk.docker.development.shinobi.vpn",
+          "use_ssl": true,
+          "use_sticky": false,
+          "timeout": 30
+        }
+      ]
+    }
+  }
+
+}
